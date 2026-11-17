@@ -1,0 +1,13 @@
+train: ../train/images
+val: ../valid/images
+test: ../test/images
+
+nc: 1
+names: ['asiento-libre']
+
+roboflow:
+  workspace: nicols-workspace-njbc8
+  project: ruta-tour-bus-seats
+  version: 2
+  license: CC BY 4.0
+  url: https://app.roboflow.com/nicols-workspace-njbc8/ruta-tour-bus-seats/2
