@@ -1,4 +1,5 @@
 import io
+import os
 
 from fastapi import FastAPI, File, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
@@ -8,10 +9,15 @@ from ultralytics import YOLO
 
 app = FastAPI()
 
-# Permite que tu front (Angular en localhost:4200) llame a esta API
+# Quién puede llamar a esta API: tu Angular local y, si existe, el de Render
+origenes = ["http://localhost:4200"]
+front = os.environ.get("FRONT_URL")
+if front:
+    origenes.append(front)
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:4200"],
+    allow_origins=origenes,
     allow_methods=["*"],
     allow_headers=["*"],
 )
